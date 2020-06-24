@@ -21,8 +21,7 @@ body{
 
 
 a{
-    text-decoration: underline;
-    transition: 0.2s;
+    text-decoration: none;
     color: #666;
 }
 
@@ -92,6 +91,11 @@ body .grid {
     transform: translate3d(40px, -38px, 0);
     margin-top: 28px;
     color: #666;
+}
+
+.inicio p a {
+    text-decoration: underline;
+    transition: 0.2s;
 }
 
 .inicio ul a {
