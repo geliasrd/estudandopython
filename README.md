@@ -15,3 +15,7 @@ Porém este material não tem o objetivo de substituir qualquer tipo de curso ou
 - Reconstruindo a página e atualizando os materiais
   
 - Estudando seaborn
+
+## Agradecimentos
+
+- [Luka Tassano - construção do site](https://github.com/lukatassano)
