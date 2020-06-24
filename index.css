@@ -21,13 +21,18 @@ body{
 
 
 a{
-    text-decoration: none;
+    text-decoration: underline;
+    transition: 0.2s;
+    color: #666;
+}
+
+a:hover{
     color: black;
 }
 
-a:visited {
+/* a:visited {
     color: black;
-}
+} */
 
 h1 {
     display: flex;
@@ -37,17 +42,16 @@ h1 {
     font-weight: 500;
     color: #444;
     font-size: 50px;
-    transform: translateX(-67px);
 }
 
 body .layer {
     display: flex;
     width: 100%;
     flex: 1;
-    margin-top: 200px;
+    margin-top: 100px;
     align-items: center;
     justify-content: center;
-    background-color: #444;
+    background-color: rgba(255, 136, 0, 0.6);
 }
 
 body .grid {
@@ -58,7 +62,7 @@ body .grid {
     align-content: space-evenly;
     align-items: center;
     /* justify-items: center; */ 
-    grid-gap: 8px;
+    grid-gap: 20px;
     margin: 50px 0;
 }
 
@@ -67,7 +71,7 @@ body .grid {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    width: 688px;
+    width: 820px;
     transform: translate3d(-240px, 0px, 0);
     align-items: flex-start;
     justify-content: initial;
@@ -97,7 +101,7 @@ body .grid {
 }
 
 .inicio ul a:hover {
-    color: rgba(255, 136, 0, 0.8);
+    color: black;
 }
 
 .inicio ul li a:hover {
@@ -107,6 +111,13 @@ body .grid {
 .inicio ul li {
     color: #666;
     transform: translate3d(40px, 0px, 0);
+}
+
+h5 {
+    margin-top: 18px;
+    font-weight: 500;
+    color: #444;
+    font-size: 45px;
 }
 
 body .bloco {
@@ -132,8 +143,7 @@ div .bloco .abrir {
 }
 
 div .bloco:hover {
-    box-shadow: 0 0 60px rgba(255, 136, 0, 0.5);
-    border: 2px solid rgba(255, 136, 0, 0.8);
+    border: 2px solid #000;
 }
 
 div .bloco .abrir h3{
@@ -141,13 +151,21 @@ div .bloco .abrir h3{
 }
 
 div .bloco:hover .abrir {
-    border-top: 2px solid rgba(255, 136, 0, 0.8);
-    color: rgba(255, 136, 0, 0.8);
+    border-top: 2px solid #000;
+}
+
+div .bloco .abrir img {
+    rotation-point:50% 50%;
+    transition: 0.4s;
+    /* transform: skewY(20deg); */
+}
+
+div .bloco:hover .abrir img {
+    transform: translateX(-30px);
 }
 
 div .bloco:hover .abrir h3 {
-    color: rgba(255, 136, 0, 0.8);
-    transform: scale(1.1, 1.1);
+    color: black;
 }
 
 div .bloco a div h2 {
@@ -163,7 +181,7 @@ div .bloco a div p {
     margin: 20px 20px 0 20px;
 }
 
-div .bloco a h3 {
+div .bloco a h4 {
     color: #000;
     font-weight: 200;
     margin: 20px;
@@ -172,9 +190,14 @@ div .bloco a h3 {
 div .bloco .abrir {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 50px;
+}
 
+div .bloco .abrir img {
+    width: 25px;
+    height: 25px;
+    transform: translateX(-50px)
 }
 
 footer {
@@ -218,6 +241,9 @@ footer ul li a img {
 footer ul li a img:hover {
     opacity: 70%;
 }
+
+
+
 
 
 @media (max-width: 1250px) {
