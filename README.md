@@ -15,3 +15,6 @@ Porém este material não tem o objetivo de substituir qualquer tipo de curso ou
 ## Agradecimentos
 
 - [Luka Tassano - construção do site](https://github.com/lukatassano)
+
+## Contato:
+- [e-mail](mailto:elias.doering@ufrgs.br)
