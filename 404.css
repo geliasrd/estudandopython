@@ -4,12 +4,11 @@ html{
 
 body{
     display: flex;
-    padding: 20px;
-    height: 100vh;
+    height: 98vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #c2c2c2;
+    background: #444;
     -webkit-font-smoothig: antialiased;
   }
   
@@ -45,7 +44,9 @@ body{
     border: 2px solid #666;
     align-items: center;
     justify-content: center;   
-    transition: border 0.4s;
+    transition: border 0.5s;
+    box-shadow: 0 0 0px rgba(255, 136, 0, 0.5);
+    transition: box-shadow 0.5s;
   }
   
   a:visited {
@@ -53,18 +54,14 @@ body{
   }
   
   a:hover {
-    color: whitesmoke;
-    border: 2px solid whitesmoke;
+    box-shadow: 0 0 60px rgba(255, 136, 0, 0.5);
+    color: rgba(255, 136, 0, 0.8);
+    border: 2px solid rgba(255, 136, 0, 0.8);
   }
 
   h2 {
     margin: 10px 15px;
     font-weight: 400;
-    transition: 0.4s;
-  }
-
-  a:hover h2{
-    transform: scale(1.05, 1);
   }
 
   @media (max-width: 400px) {
@@ -75,5 +72,17 @@ body{
     h2 {
       font-size: 20px;
     }
+
+}
+@media (min-width: 2200px) {
+  body {
+      align-items: center;
+      text-align: center;
+  }
+
+  body .grid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 88px;
+  }
 
 }

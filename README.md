@@ -1,7 +1,3 @@
----
-permalink: /index.html
----
-
 # Sobre
 
 Me chamo Guilherme Elias, tenho 20 anos, sou *estudante* do curso de Bacharelado em **Estatística** da UFRGS (Universidade Federal do Rio Grande do Sul) e Bolsista de Iniciação Cientifica.

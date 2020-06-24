@@ -14,9 +14,11 @@ body{
     flex: 1;
     align-items: center;
     justify-content: center;
-    background: #ddd;
+    background: #c2c2c2;
     -webkit-font-smoothig: antialiased;
 }
+
+
 
 a{
     text-decoration: none;
@@ -32,9 +34,10 @@ h1 {
     align-items: center;
     align-content: space-between;
     margin-top: 30px;
-    font-weight: 400;
-    color: #555;
+    font-weight: 500;
+    color: #444;
     font-size: 50px;
+    transform: translateX(-67px);
 }
 
 body .layer {
@@ -44,7 +47,7 @@ body .layer {
     margin-top: 200px;
     align-items: center;
     justify-content: center;
-    background-color: #99999920;
+    background-color: #444;
 }
 
 body .grid {
@@ -84,18 +87,17 @@ body .grid {
 .inicio p {
     transform: translate3d(40px, -38px, 0);
     margin-top: 28px;
-    color: #777;
+    color: #666;
 }
 
-.inicio ul .agradecimentos {
+.inicio ul a {
     text-decoration: underline;
-    color: black;
     transition: 0.2s;
-    color: #777;
+    color: #666;
 }
 
 .inicio ul a:hover {
-    color: whitesmoke;
+    color: rgba(255, 136, 0, 0.8);
 }
 
 .inicio ul li a:hover {
@@ -103,13 +105,12 @@ body .grid {
 }
 
 .inicio ul li {
-    color: #777;
+    color: #666;
     transform: translate3d(40px, 0px, 0);
 }
 
 body .bloco {
     display: flex;
-    width: 300px;
     border: 2px solid #999;
     transition: 0.4s;
     outline: none;
@@ -118,20 +119,21 @@ body .bloco {
 div .bloco a .introducao {
     display: flex;
     height: 200px;
+    width: 300px;
     flex-direction: column;
     transition: 0.4s;
-    background-color: #ddd;
+    background-color: #c2c2c2;
 }
 
 div .bloco .abrir {
-    background-color: #ddd;
-    border-top: 2px solid #999;
+    background-color: #c2c2c2;
+    border-top: 2px solid #999; 
     transition: 0.4s;
 }
 
 div .bloco:hover {
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.25);
-    border: 2px solid #000;
+    box-shadow: 0 0 60px rgba(255, 136, 0, 0.5);
+    border: 2px solid rgba(255, 136, 0, 0.8);
 }
 
 div .bloco .abrir h3{
@@ -139,12 +141,13 @@ div .bloco .abrir h3{
 }
 
 div .bloco:hover .abrir {
-    border-top: 2px solid #000;
+    border-top: 2px solid rgba(255, 136, 0, 0.8);
+    color: rgba(255, 136, 0, 0.8);
 }
 
 div .bloco:hover .abrir h3 {
-    color: #000;
-    transform: scale(1.15, 1.15);
+    color: rgba(255, 136, 0, 0.8);
+    transform: scale(1.1, 1.1);
 }
 
 div .bloco a div h2 {
@@ -183,7 +186,7 @@ footer {
     margin-top: 80px;
     align-items: center;
     justify-content: center;
-    background-color: #ddd;
+    background-color: #c2c2c2;
 }
 
 footer {
@@ -223,6 +226,10 @@ footer ul li a img:hover {
         text-align: center;
     }
     
+    h1{
+        transform: translateX(0px);
+    }
+
     body .grid {
         grid-template-columns: 1fr 1fr 1fr;
 
@@ -256,6 +263,10 @@ footer ul li a img:hover {
     body {
         align-items: center;
         text-align: center;
+    }
+
+    h1{
+        transform: translateX(0px);
     }
 
     body .grid {
@@ -295,6 +306,10 @@ footer ul li a img:hover {
         text-align: center;
     }
     
+    h1{
+        transform: translateX(0px);
+    }
+
     .inicio {
         margin-top: 20px;
         display: flex;
@@ -329,7 +344,7 @@ footer ul li a img:hover {
 }
 
 
-@media (min-width: 2000px) {
+@media (min-width: 2200px) {
     body {
         align-items: center;
         text-align: center;
