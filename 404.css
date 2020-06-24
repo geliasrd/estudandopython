@@ -4,53 +4,85 @@ html{
 
 body{
     display: flex;
+    height: 98vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #c2c2c2;
+    background: #444;
     -webkit-font-smoothig: antialiased;
   }
   
-  div {
+  .title {
     display: flex;
-    flex: 1;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 80px;
   }
   
-  h1 {
+  .title h1 {
     display: flex;
+    font-size: 150px;
+    color: #888;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;    
+    margin: 0;
+  }
+
+  .title h2 {
+    margin: 0;
+    display: flex;
+    font-size: 30px;
+    color: #666;
+    flex-direction: column;
+    font-weight: 400;
   }
   
   a {
     display: flex;
     text-decoration: none;
-    height: 100px;
-    width: 400px;
-    color: black;
-    transition: 0.4s;
-    border: 2px solid black;
+    color: #666;
+    border: 2px solid #666;
     align-items: center;
     justify-content: center;   
+    transition: border 0.5s;
+    box-shadow: 0 0 0px rgba(255, 136, 0, 0.5);
+    transition: box-shadow 0.5s;
   }
   
   a:visited {
-    color: black;
+    color: #666;
   }
   
   a:hover {
-    color: whitesmoke;
-    border: 2px solid whitesmoke;
+    box-shadow: 0 0 60px rgba(255, 136, 0, 0.5);
+    color: rgba(255, 136, 0, 0.8);
+    border: 2px solid rgba(255, 136, 0, 0.8);
   }
 
-  h1 {
-    transition: 0.4s;
+  h2 {
+    margin: 10px 15px;
+    font-weight: 400;
   }
 
-  a:hover h1{
-    transform: scale(1.05, 1);
+  @media (max-width: 400px) {
+    .title h2 {
+      font-size: 22px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+}
+@media (min-width: 2200px) {
+  body {
+      align-items: center;
+      text-align: center;
   }
+
+  body .grid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 88px;
+  }
+
+}

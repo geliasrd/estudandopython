@@ -18,6 +18,8 @@ body{
     -webkit-font-smoothig: antialiased;
 }
 
+
+
 a{
     text-decoration: none;
     color: black;
@@ -32,10 +34,25 @@ h1 {
     align-items: center;
     align-content: space-between;
     margin-top: 30px;
+    font-weight: 500;
+    color: #444;
+    font-size: 50px;
+    transform: translateX(-67px);
+}
+
+body .layer {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    margin-top: 200px;
+    align-items: center;
+    justify-content: center;
+    background-color: #444;
 }
 
 body .grid {
     display: inline-grid;
+    transform: translate3d(0, -100px, 0);
     grid-column-gap: 50px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-content: space-evenly;
@@ -59,55 +76,64 @@ body .grid {
 }
 
 .inicio h2 {
-    color: #222;
+    color: #555;
     font-weight: bold;
     font-size: 32px;
     margin: 20px 0  ;
     text-align: start;
+    font-weight: 500;
 }
 
 .inicio p {
     transform: translate3d(40px, -38px, 0);
     margin-top: 28px;
+    color: #666;
 }
 
-.inicio ul .agradecimentos {
+.inicio ul a {
     text-decoration: underline;
-    color: black;
-    transition: 0.4s;
+    transition: 0.2s;
+    color: #666;
 }
 
 .inicio ul a:hover {
-    color: whitesmoke;
+    color: rgba(255, 136, 0, 0.8);
+}
+
+.inicio ul li a:hover {
+    transition: 0.2s;
 }
 
 .inicio ul li {
+    color: #666;
     transform: translate3d(40px, 0px, 0);
 }
 
 body .bloco {
     display: flex;
-    width: 300px;
-    border: 2px solid #000;
+    border: 2px solid #999;
     transition: 0.4s;
     outline: none;
-    
 }
 
 div .bloco a .introducao {
     display: flex;
     height: 200px;
+    width: 300px;
     flex-direction: column;
     transition: 0.4s;
+    background-color: #c2c2c2;
 }
 
 div .bloco .abrir {
-    border-top: 2px solid #000;
+    background-color: #c2c2c2;
+    border-top: 2px solid #999; 
     transition: 0.4s;
 }
 
 div .bloco:hover {
-    border: 2px solid whitesmoke;
+    box-shadow: 0 0 60px rgba(255, 136, 0, 0.5);
+    border: 2px solid rgba(255, 136, 0, 0.8);
 }
 
 div .bloco .abrir h3{
@@ -115,13 +141,13 @@ div .bloco .abrir h3{
 }
 
 div .bloco:hover .abrir {
-    border-top: 2px solid whitesmoke;
-    
+    border-top: 2px solid rgba(255, 136, 0, 0.8);
+    color: rgba(255, 136, 0, 0.8);
 }
 
 div .bloco:hover .abrir h3 {
-    color: whitesmoke;
-    transform: scale(1.1, 1);
+    color: rgba(255, 136, 0, 0.8);
+    transform: scale(1.1, 1.1);
 }
 
 div .bloco a div h2 {
@@ -160,7 +186,7 @@ footer {
     margin-top: 80px;
     align-items: center;
     justify-content: center;
-    background-color: #99999999;
+    background-color: #c2c2c2;
 }
 
 footer {
@@ -168,17 +194,31 @@ footer {
     justify-content: space-around;   
 }
 
+
 footer ul {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     list-style:none;
 }
 
-footer ul li a img {
-    margin: 0 10px;
-    fill: #fff;
+footer ul li a {
+    display: flex;
+    flex: 1;
+    margin: 90px 10px;
 }
+
+footer ul li a img {
+    height: 40px;
+    width: 40px;
+    transition: 0.3s;
+}
+
+footer ul li a img:hover {
+    opacity: 70%;
+}
+
 
 @media (max-width: 1250px) {
     body {
@@ -186,6 +226,10 @@ footer ul li a img {
         text-align: center;
     }
     
+    h1{
+        transform: translateX(0px);
+    }
+
     body .grid {
         grid-template-columns: 1fr 1fr 1fr;
 
@@ -221,6 +265,10 @@ footer ul li a img {
         text-align: center;
     }
 
+    h1{
+        transform: translateX(0px);
+    }
+
     body .grid {
         grid-template-columns: 1fr 1fr;
 
@@ -239,12 +287,12 @@ footer ul li a img {
         margin: 20px 0  ;
         text-align: center;
     }
-
+    
     .inicio p {
         transform: translate3d(0px, 0px, 0);
         margin-top: 28px;
     }
-
+    
     .inicio ul li {
         transform: translate3d(0px, 0px, 0);
         margin-left: 10px;
@@ -258,6 +306,10 @@ footer ul li a img {
         text-align: center;
     }
     
+    h1{
+        transform: translateX(0px);
+    }
+
     .inicio {
         margin-top: 20px;
         display: flex;
@@ -289,10 +341,10 @@ footer ul li a img {
         grid-template-columns: 1fr;
 
     }
-
 }
 
-@media (min-width: 2000px) {
+
+@media (min-width: 2200px) {
     body {
         align-items: center;
         text-align: center;
