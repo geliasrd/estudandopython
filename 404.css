@@ -4,6 +4,8 @@ html{
 
 body{
     display: flex;
+    padding: 20px;
+    height: 100vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -11,35 +13,43 @@ body{
     -webkit-font-smoothig: antialiased;
   }
   
-  div {
+  .title {
     display: flex;
-    flex: 1;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 80px;
   }
   
-  h1 {
+  .title h1 {
     display: flex;
+    font-size: 150px;
+    color: #888;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;    
+    margin: 0;
+  }
+
+  .title h2 {
+    margin: 0;
+    display: flex;
+    font-size: 30px;
+    color: #666;
+    flex-direction: column;
+    font-weight: 400;
   }
   
   a {
     display: flex;
     text-decoration: none;
-    height: 100px;
-    width: 400px;
-    color: black;
-    transition: 0.4s;
-    border: 2px solid black;
+    color: #666;
+    border: 2px solid #666;
     align-items: center;
     justify-content: center;   
+    transition: border 0.4s;
   }
   
   a:visited {
-    color: black;
+    color: #666;
   }
   
   a:hover {
@@ -47,10 +57,23 @@ body{
     border: 2px solid whitesmoke;
   }
 
-  h1 {
+  h2 {
+    margin: 10px 15px;
+    font-weight: 400;
     transition: 0.4s;
   }
 
-  a:hover h1{
+  a:hover h2{
     transform: scale(1.05, 1);
   }
+
+  @media (max-width: 400px) {
+    .title h2 {
+      font-size: 22px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+}
