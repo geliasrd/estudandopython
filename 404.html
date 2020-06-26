@@ -1,13 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Guilherme Elias Rodriguez Doering" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="404.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
-    <title>404 - Página não encontrada</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Guilherme Elias Rodriguez Doering" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Krub:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+  <style>
+    html{
+      font-family: 'Krub', sans-serif;
+    }
+    
+    body{
+      display: flex;
+      height: 98vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #c2c2c2;
+      -webkit-font-smoothig: antialiased;
+    }
+    
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 80px;
+    }
+    
+    .title h1 {
+      display: flex;
+      font-size: 150px;
+      color: #888;
+      flex-direction: column;
+      margin: 0;
+    }
+    
+    .title h2 {
+      margin: 0;
+      display: flex;
+      font-size: 30px;
+      color: #666;
+      flex-direction: column;
+      font-weight: 400;
+    }
+    
+    a {
+      display: flex;
+      text-decoration: none;
+      color: black;
+      border: 2px solid #666;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s;
+      /* box-shadow: 0 0 0px rgba(255, 136, 0, 0.5); */
+      /* transition: box-shadow 0.5s; */
+    }
+    
+    a:visited {
+      color: black;
+    }
+    
+    a:hover {
+      /* box-shadow: 0 0 60px rgba(255, 136, 0, 0.5); */
+      color: black;
+      border: 2px solid black;
+    }
+    
+    h2 {
+      margin: 10px 15px;
+      font-weight: 400;
+    }
+    
+    @media (max-width: 400px) {
+      .title h2 {
+        font-size: 22px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+    }
+    @media (min-width: 2200px) {
+      body {
+        align-items: center;
+        text-align: center;
+      }
+      
+      body .grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 88px;
+      }
+    }
+  </style>
+  <title>404 - Página não encontrada</title>
 </head>
 <body>
   <div>
@@ -15,9 +103,9 @@
       <h1>404</h1>
       <h2>Página não encontrada</h2>
     </div>
-
+    
     <a href="https://geliasrd.github.io/estudandopython"><h2>Ir para página principal</h2></a>
   </div>
-
+  
 </body>
 </html>
