@@ -183,6 +183,11 @@ div .bloco a div p {
     font-weight: 200;
     color: #000;
     margin: 20px 20px 0 20px;
+    text-justify: inter-word;
+}
+
+div .bloco a div p b {
+    font-weight: 500;
 }
 
 div .bloco a h4 {

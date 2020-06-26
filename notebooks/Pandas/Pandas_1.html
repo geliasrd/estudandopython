@@ -2,11 +2,11 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Python 101</title>
+<title>Pandas_1</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+<link rel="icon" type="image/x-icon" href="./images/favicon.ico"/>
 
 
 <style type="text/css">
@@ -11432,7 +11432,7 @@ div#notebook {
 @media not print {
   #notebook-container {
     padding: 15px;
-    background-color: whitesmoke;
+    background-color: white;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.8);
     box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.8);
@@ -13077,22 +13077,33 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python-101">Python 101<a class="anchor-link" href="#Python-101">&#182;</a></h1>
+<h1 id="Pandas:-come&#231;ando-a-trabalhar-com-bancos-de-dados">Pandas: come&#231;ando a trabalhar com bancos de dados<a class="anchor-link" href="#Pandas:-come&#231;ando-a-trabalhar-com-bancos-de-dados">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Primeiros-comandos-e-no&#231;&#245;es-b&#225;sicas">Primeiros comandos e no&#231;&#245;es b&#225;sicas<a class="anchor-link" href="#Primeiros-comandos-e-no&#231;&#245;es-b&#225;sicas">&#182;</a></h2>
+<p><a href="https://mybinder.org/v2/gh/geliasrd/estudandopython/master?filepath=%2Fnotebooks%2FPandas%2FPandas_1.ipynb"><img src="https://mybinder.org/badge_logo.svg" alt="Binder"></a></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Coment&#225;rios-e-Sintaxe">Coment&#225;rios e Sintaxe<a class="anchor-link" href="#Coment&#225;rios-e-Sintaxe">&#182;</a></h3><p>Começaremos com o mais crucial para qualquer linguagem, o comentário.
-No Python, assim como no R, comentamos com a utilização da <code>#</code> seguido do que desejamos escrever:</p>
+<h2 id="Contextualizando">Contextualizando<a class="anchor-link" href="#Contextualizando">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Como sabemos, o Python, diferentemente do R, não foi construído com o trabalho estatístico e de ciência de dados em mente. Ou seja, a maioria das funcionalidades que precisamos para nossa rotina de trabalho serão adicionadas por meio de bibliotecas.</p>
+<p>A primeira biblioteca que vamos ver tem como nome, <a href="https://pandas.pydata.org/">Pandas</a>, e ela nos possibilita o trabalho com bancos de dados, de uma maneira eficiente e simples. O Pandas é construída em cima de outras duas bibliotecas muito importantes, e que veremos mais adiante, o Matplotlib e o Numpy.</p>
+<p>Ou seja, ao importar esta biblioteca a nossa sessão, estaremos adicionando ao Python varias funcionalidades relacionadas a bancos de dados. Primeiramente poderemos importar arquivos csv, txt, xls dentre outros, estes arquivos então serão disponibilizados para trabalhar em um objeto que o Pandas chama de <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">DataFrame</a>.</p>
+<p>Esse novo objeto vem com diversos métodos e atributos que serão muito utilizados em nossas analises.</p>
+<p>Começaremos então importando essa biblioteca, e dando um "apelido" a ele, pra facilitar sua chamada ao longo da sessão, fazendo com que não seja necessário escrever o nome completo da biblioteca toda vez que chamarmos alguma função ou utilizarmos algo que pertence a ela. O padrão para o Pandas é abreviar com as letras pd.</p>
 
 </div>
 </div>
@@ -13102,9 +13113,7 @@ No Python, assim como no R, comentamos com a utilização da <code>#</code> segu
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># isso é um comentário, comentários são ignorados na hora da execução</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span> <span class="c1"># depois da hasthag é comentário, antes não</span>
-<span class="c1"># print(&quot;def&quot;) essa linha não vai ser executada</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 
     </div>
@@ -13115,12 +13124,8 @@ No Python, assim como no R, comentamos com a utilização da <code>#</code> segu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>O que no R e em muitas outras linguagens é utilizado simplesmente por questões estéticas e para facilitar a leitura, no Python é obrigatório e essencial, é o que mantêm tudo funcionando, a saber, a <strong>indentação</strong>.</p>
-<p>A quantidade de espaços é de escolha sua, mas o padrão é 4 espaços. Mais pra frente veremos como e quando utilizar. Vale apontar que em um mesmo bloco, deve ser utilizado o mesmo número de espaços. O mais seguro e recomendado é sempre utilizar 4.</p>
-<p>As <code>{}</code>, <code>[]</code>, ou até mesmo palavras chave não são necessárias pra evidenciar um loop ou condicionamento, apenas indentar da maneira correta. (Pois afinal de contas, mesmo utilizando as chaves, a gente sempre acabava indentando igual pra conseguir entender melhor o que estava acontecendo.)</p>
-<p>E também, ao invés de utilizar <code>:</code> ou <code>;</code> no final de praticamente todas as linhas como em <em>C</em>, não utilizamos nada, apenas passamos para a próxima linha, simples.
-Porém obviamente em alguns casos precisamos alguns símbolos, como por exemplo no <code>if</code>, <code>for</code> e etc.</p>
-<p>Além disso, o Python é uma linguagem 'case sensitive', ou seja, difere as letras maiúsculas de minúsculas, igual ao R.</p>
+<p>Agora que já temos a biblioteca importada, podemos então começar com o que havíamos falado anteriormente, importando um banco de dados. Isso se da atraves da função <code>read_*</code>, onde <code>*</code> é o tipo do arquivo. Como estamos utilizando um banco csv, vamos utilizar a função <code>read_csv</code>, mas existem outras como pro exemplo a <code>read_excel</code> para lermos arquivos xls, xlsx dentre outros.</p>
+<p>A função <code>read_csv</code> necessita receber como parâmetro, o caminho para o arquivo, mas também podemos informar diferentes separadores, informar colunas para índice, importar somente algumas partes do banco caso falte memoria, entre outros.</p>
 
 </div>
 </div>
@@ -13130,16 +13135,339 @@ Porém obviamente em alguns casos precisamos alguns símbolos, como por exemplo 
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x eh maior do que 3&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x eh igual a 3&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x eh menor do que 3&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/estudandopython/datasets/billionaires.csv&quot;</span><span class="p">)</span>
+<span class="n">bill</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rank</th>
+      <th>year</th>
+      <th>company.founded</th>
+      <th>company.name</th>
+      <th>company.relationship</th>
+      <th>company.sector</th>
+      <th>company.type</th>
+      <th>demographics.age</th>
+      <th>demographics.gender</th>
+      <th>...</th>
+      <th>location.gdp</th>
+      <th>location.region</th>
+      <th>wealth.type</th>
+      <th>wealth.worth in billions</th>
+      <th>wealth.how.category</th>
+      <th>wealth.how.from emerging</th>
+      <th>wealth.how.industry</th>
+      <th>wealth.how.inherited</th>
+      <th>wealth.how.was founder</th>
+      <th>wealth.how.was political</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>1996</td>
+      <td>1975</td>
+      <td>Microsoft</td>
+      <td>founder</td>
+      <td>Software</td>
+      <td>new</td>
+      <td>40</td>
+      <td>male</td>
+      <td>...</td>
+      <td>8.100000e+12</td>
+      <td>North America</td>
+      <td>founder non-finance</td>
+      <td>18.5</td>
+      <td>New Sectors</td>
+      <td>True</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>2001</td>
+      <td>1975</td>
+      <td>Microsoft</td>
+      <td>founder</td>
+      <td>Software</td>
+      <td>new</td>
+      <td>45</td>
+      <td>male</td>
+      <td>...</td>
+      <td>1.060000e+13</td>
+      <td>North America</td>
+      <td>founder non-finance</td>
+      <td>58.7</td>
+      <td>New Sectors</td>
+      <td>True</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>2014</td>
+      <td>1975</td>
+      <td>Microsoft</td>
+      <td>founder</td>
+      <td>Software</td>
+      <td>new</td>
+      <td>58</td>
+      <td>male</td>
+      <td>...</td>
+      <td>0.000000e+00</td>
+      <td>North America</td>
+      <td>founder non-finance</td>
+      <td>76.0</td>
+      <td>New Sectors</td>
+      <td>True</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Warren Buffett</td>
+      <td>2</td>
+      <td>1996</td>
+      <td>1962</td>
+      <td>Berkshire Hathaway</td>
+      <td>founder</td>
+      <td>Finance</td>
+      <td>new</td>
+      <td>65</td>
+      <td>male</td>
+      <td>...</td>
+      <td>8.100000e+12</td>
+      <td>North America</td>
+      <td>founder non-finance</td>
+      <td>15.0</td>
+      <td>Traded Sectors</td>
+      <td>True</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Warren Buffett</td>
+      <td>2</td>
+      <td>2001</td>
+      <td>1962</td>
+      <td>Berkshire Hathaway</td>
+      <td>founder</td>
+      <td>Finance</td>
+      <td>new</td>
+      <td>70</td>
+      <td>male</td>
+      <td>...</td>
+      <td>1.060000e+13</td>
+      <td>North America</td>
+      <td>founder non-finance</td>
+      <td>32.3</td>
+      <td>Traded Sectors</td>
+      <td>True</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2609</th>
+      <td>Wu Chung-Yi</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1991</td>
+      <td>Tingyi</td>
+      <td>investor</td>
+      <td>beverages and food</td>
+      <td>new</td>
+      <td>55</td>
+      <td>male</td>
+      <td>...</td>
+      <td>0.000000e+00</td>
+      <td>East Asia</td>
+      <td>executive</td>
+      <td>1.0</td>
+      <td>Traded Sectors</td>
+      <td>True</td>
+      <td>Non-consumer industrial</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2610</th>
+      <td>Wu Xiong</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>Biostime International Holdings</td>
+      <td>owner</td>
+      <td>infant formula</td>
+      <td>new</td>
+      <td>0</td>
+      <td>male</td>
+      <td>...</td>
+      <td>0.000000e+00</td>
+      <td>East Asia</td>
+      <td>executive</td>
+      <td>1.0</td>
+      <td>Traded Sectors</td>
+      <td>True</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2611</th>
+      <td>Yang Keng</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>Blue Ray Corp</td>
+      <td>chairman</td>
+      <td>real estate</td>
+      <td>new</td>
+      <td>53</td>
+      <td>male</td>
+      <td>...</td>
+      <td>0.000000e+00</td>
+      <td>East Asia</td>
+      <td>self-made finance</td>
+      <td>1.0</td>
+      <td>Financial</td>
+      <td>True</td>
+      <td>Real Estate</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2612</th>
+      <td>Zdenek Bakala</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1994</td>
+      <td>Patria Finance</td>
+      <td>founder</td>
+      <td>coal</td>
+      <td>new</td>
+      <td>53</td>
+      <td>male</td>
+      <td>...</td>
+      <td>0.000000e+00</td>
+      <td>Europe</td>
+      <td>privatized and resources</td>
+      <td>1.0</td>
+      <td>Resource Related</td>
+      <td>True</td>
+      <td>Mining and metals</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2613</th>
+      <td>Zhu Wenchen</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>Furen Pharmaceutical Group</td>
+      <td>chairman</td>
+      <td>pharmaceuticals</td>
+      <td>new</td>
+      <td>48</td>
+      <td>male</td>
+      <td>...</td>
+      <td>0.000000e+00</td>
+      <td>East Asia</td>
+      <td>executive</td>
+      <td>1.0</td>
+      <td>New Sectors</td>
+      <td>True</td>
+      <td>Technology-Medical</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>2614 rows × 22 columns</p>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13147,10 +13475,15 @@ Porém obviamente em alguns casos precisamos alguns símbolos, como por exemplo 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Fun&#231;&#227;o-Print">Fun&#231;&#227;o Print<a class="anchor-link" href="#Fun&#231;&#227;o-Print">&#182;</a></h3><p>O comando <code>print</code> nos permite escrever na tela o que precisarmos, de maneira muito simples. Basta chamar a função, e dentro dela escrever o que queremos entres aspas, ou até incluir variáveis.
-É possível usar vários objetos em um só comando, separando eles por <code>,</code>.</p>
-<p>O que separa um objeto do outro no output é padronizado como sendo o espaço em branco. Porém se necessário pode ser alterado utilizando o argumento <code>sep =</code>.
-A função print ainda possui outros argumentos, porém não são interessantes pra agora.</p>
+<h1 id="Conhecendo-o-banco">Conhecendo o banco<a class="anchor-link" href="#Conhecendo-o-banco">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para começarmos a entender melhor o banco que estamos trabalhando, podemos usar alguns métodos e atributos do <code>DataFrame</code>.
+O atributo <code>shape</code> nos informa a quantidade de linhas e colunas respectivamente do banco de dados, e o <code>columns</code> retorna de maneira ordenada, o nome de cada uma das colunas do banco.</p>
 
 </div>
 </div>
@@ -13160,13 +13493,40 @@ A função print ainda possui outros argumentos, porém não são interessantes 
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;!&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;---&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bill</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">bill</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bill</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+(2614, 22)
+Index([&#39;name&#39;, &#39;rank&#39;, &#39;year&#39;, &#39;company.founded&#39;, &#39;company.name&#39;,
+       &#39;company.relationship&#39;, &#39;company.sector&#39;, &#39;company.type&#39;,
+       &#39;demographics.age&#39;, &#39;demographics.gender&#39;, &#39;location.citizenship&#39;,
+       &#39;location.country code&#39;, &#39;location.gdp&#39;, &#39;location.region&#39;,
+       &#39;wealth.type&#39;, &#39;wealth.worth in billions&#39;, &#39;wealth.how.category&#39;,
+       &#39;wealth.how.from emerging&#39;, &#39;wealth.how.industry&#39;,
+       &#39;wealth.how.inherited&#39;, &#39;wealth.how.was founder&#39;,
+       &#39;wealth.how.was political&#39;],
+      dtype=&#39;object&#39;)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13174,10 +13534,7 @@ A função print ainda possui outros argumentos, porém não são interessantes 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Vari&#225;veis">Vari&#225;veis<a class="anchor-link" href="#Vari&#225;veis">&#182;</a></h3><p>No Python normalmente não utilizamos nenhum comando na hora de declarar uma variável, assim como no R. Basta atribuir um valor ao nome desejado que ela é criada automaticamente, com o tipo "mais adequado" pra situação.
-Porém vale ressaltar que o tipo também pode ser mudado depois, sem problemas.
-O nome da variável pode começar com letras ou <code>_</code>, e ela pode conter letras, números e o underline (<code>_</code>).
-Lembrando que o Python é uma linguagem que difere letras maiúsculas de minúsculas, ou seja, podem existir variáveis com nomes praticamente idênticos, mudando apenas a capitalização.</p>
+<p>Podemos ter uma visão mais geral utilizando os métodos <code>info</code> e <code>describe</code>. O <code>info</code> nos mostra o numero de índice da coluna, seu nome, quantidade de não nulos e o tipo do dado, além de informar quanta memoria é utilizada pelo banco.</p>
 
 </div>
 </div>
@@ -13187,19 +13544,7 @@ Lembrando que o Python é uma linguagem que difere letras maiúsculas de minúsc
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">var1</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span>    <span class="c1"># é diferente da Var1</span>
-<span class="n">Var1</span> <span class="o">=</span> <span class="s2">&quot;def&quot;</span>
-<span class="n">_nome</span> <span class="o">=</span> <span class="mi">34</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">_nome</span><span class="p">)</span>
-
-<span class="n">var1</span> <span class="o">=</span> <span class="mi">22</span>       <span class="c1"># podemos mudar o valor e/ou o tipo dela depois, redeclarando</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">var1</span><span class="p">)</span>
-
-<span class="c1"># podemos também declarar varias variáveis de uma vez só</span>
-<span class="n">var1</span> <span class="o">=</span> <span class="n">var2</span> <span class="o">=</span> <span class="n">var3</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;oi&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">,</span> <span class="n">var3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13216,10 +13561,35 @@ Lembrando que o Python é uma linguagem que difere letras maiúsculas de minúsc
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>abc 34
-22
-4 4 4
-1 2 oi
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2614 entries, 0 to 2613
+Data columns (total 22 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   name                      2614 non-null   object 
+ 1   rank                      2614 non-null   int64  
+ 2   year                      2614 non-null   int64  
+ 3   company.founded           2614 non-null   int64  
+ 4   company.name              2576 non-null   object 
+ 5   company.relationship      2568 non-null   object 
+ 6   company.sector            2591 non-null   object 
+ 7   company.type              2578 non-null   object 
+ 8   demographics.age          2614 non-null   int64  
+ 9   demographics.gender       2580 non-null   object 
+ 10  location.citizenship      2614 non-null   object 
+ 11  location.country code     2614 non-null   object 
+ 12  location.gdp              2614 non-null   float64
+ 13  location.region           2614 non-null   object 
+ 14  wealth.type               2592 non-null   object 
+ 15  wealth.worth in billions  2614 non-null   float64
+ 16  wealth.how.category       2613 non-null   object 
+ 17  wealth.how.from emerging  2614 non-null   bool   
+ 18  wealth.how.industry       2613 non-null   object 
+ 19  wealth.how.inherited      2614 non-null   object 
+ 20  wealth.how.was founder    2614 non-null   bool   
+ 21  wealth.how.was political  2614 non-null   bool   
+dtypes: bool(3), float64(2), int64(4), object(13)
+memory usage: 395.8+ KB
 </pre>
 </div>
 </div>
@@ -13231,15 +13601,7 @@ Lembrando que o Python é uma linguagem que difere letras maiúsculas de minúsc
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Os "<strong>data types</strong>" mais básicos são:</p>
-<ul>
-<li><code>int</code> : números inteiros</li>
-<li><code>float</code> : numero com ponto flutuante</li>
-<li><code>bool</code> : <code>True</code> (<code>1</code>) ou <code>False</code> (<code>0</code>) <em>(no R é TRUE ou FALSE)</em></li>
-<li><code>str</code> : strings, texto entre <code>' '</code> ou <code>" "</code>, ou aspas triplas pra texto em mais de uma linha</li>
-</ul>
-<p>Como dito anteriormente, o Python atribui automaticamente um tipo à variável quando ela é criada, e isso é o bastante na grande maioria dos casos. Porém é possível, se quiser, declarar a variável tendo um tipo específico, ou até mudar o tipo de uma variável já criada.</p>
-<p>Para saber o tipo da variável com que estamos lidando, devemos usar a função <code>type()</code>, ao inves da <code>class()</code> do <em>R</em>.</p>
+<p>O <code>describe</code> por sua vez, calcula algumas estatísticas básicas sobre as variáveis numéricas, como média, desvio padrão entre outras.</p>
 
 </div>
 </div>
@@ -13249,41 +13611,7 @@ Lembrando que o Python é uma linguagem que difere letras maiúsculas de minúsc
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>       <span class="c1"># int</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mf">8.8</span>     <span class="c1"># float</span>
-<span class="n">z</span> <span class="o">=</span> <span class="s2">&quot;oito&quot;</span>  <span class="c1"># string</span>
-<span class="n">b</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># booleano</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">z</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-
-<span class="c1"># note que com o &quot;\n&quot;, estamos botando uma string entre os elementos,</span>
-<span class="c1"># e essa string é o código \n que simboliza nova linha</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">9.8</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">9.8</span><span class="p">)</span>         <span class="c1"># note que ele desconsidera a parte decimal</span>
-<span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">9.8</span><span class="p">))</span>  <span class="c1"># agora iremos arredondar o numero decimal</span>
-<span class="n">z</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;nove&quot;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">r</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">z</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="n">t</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
-
-<span class="n">textogrande</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Olá mundo,</span>
-<span class="s2">este aqui é um texto maior que o normal,</span>
-<span class="s2">e por isso precisamos de mais de uma linha&quot;&quot;&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">textogrande</span><span class="p">)</span>  <span class="c1"># note que as quebras de linha são feitas no mesmo lugar que no código</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13296,26 +13624,115 @@ Lembrando que o Python é uma linguagem que difere letras maiúsculas de minúsc
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>8 &lt;class &#39;int&#39;&gt; 
- 8.8 &lt;class &#39;float&#39;&gt; 
- oito &lt;class &#39;str&#39;&gt; 
- True &lt;class &#39;bool&#39;&gt;
-9 &lt;class &#39;int&#39;&gt; 
- 9.8 &lt;class &#39;float&#39;&gt; 
- 9 &lt;class &#39;int&#39;&gt; 
- 10 &lt;class &#39;int&#39;&gt; 
- nove &lt;class &#39;str&#39;&gt; 
- False &lt;class &#39;bool&#39;&gt; 
- 9.8 &lt;class &#39;str&#39;&gt;
-Olá mundo,
-este aqui é um texto maior que o normal,
-e por isso precisamos de mais de uma linha
-</pre>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rank</th>
+      <th>year</th>
+      <th>company.founded</th>
+      <th>demographics.age</th>
+      <th>location.gdp</th>
+      <th>wealth.worth in billions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2614.000000</td>
+      <td>2614.000000</td>
+      <td>2614.000000</td>
+      <td>2614.000000</td>
+      <td>2.614000e+03</td>
+      <td>2614.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>599.672533</td>
+      <td>2008.411630</td>
+      <td>1924.711936</td>
+      <td>53.341239</td>
+      <td>1.769103e+12</td>
+      <td>3.531943</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>467.885695</td>
+      <td>7.483598</td>
+      <td>243.776546</td>
+      <td>25.333320</td>
+      <td>3.547083e+12</td>
+      <td>5.088813</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1996.000000</td>
+      <td>0.000000</td>
+      <td>-42.000000</td>
+      <td>0.000000e+00</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>215.000000</td>
+      <td>2001.000000</td>
+      <td>1936.000000</td>
+      <td>47.000000</td>
+      <td>0.000000e+00</td>
+      <td>1.400000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>430.000000</td>
+      <td>2014.000000</td>
+      <td>1963.000000</td>
+      <td>59.000000</td>
+      <td>0.000000e+00</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>988.000000</td>
+      <td>2014.000000</td>
+      <td>1985.000000</td>
+      <td>70.000000</td>
+      <td>7.250000e+11</td>
+      <td>3.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1565.000000</td>
+      <td>2014.000000</td>
+      <td>2012.000000</td>
+      <td>98.000000</td>
+      <td>1.060000e+13</td>
+      <td>76.000000</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -13325,17 +13742,7 @@ e por isso precisamos de mais de uma linha
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Operadores">Operadores<a class="anchor-link" href="#Operadores">&#182;</a></h4><p>Antes de começarmos com os operadores aritméticos clássicos, precisamos entender que a maneira que o código se comporta depende do tipo da variável. Ou seja, uma função ou operador pode ter efeitos diferentes dependendo do tipo da variável, ou até nem funcionar/existir.</p>
-<p>Quando se trata de aritmética, temos:</p>
-<ul>
-<li><code>+</code>: adição</li>
-<li><code>-</code>: subtração</li>
-<li><code>*</code>: multiplicação</li>
-<li><code>/</code>: divisão</li>
-<li><code>%</code>: resto da divisão</li>
-<li><code>//</code>: quociente da divisão</li>
-<li><code>**</code>: exponenciação</li>
-</ul>
+<p>É interessante também configurar o quanto sera mostrado toda vez que pedirmos algo do banco, podemos fazer isso através do <code>set_option</code>. Podemos então configurar o máximo de linhas e colunas, e o mínimo de linhas a serem mostrado. Isso varia com o caso e interface que está sendo usada, para essa aula estaremos usando as configurações abaixo, mas sem nenhuma razão específica.</p>
 
 </div>
 </div>
@@ -13345,43 +13752,12 @@ e por isso precisamos de mais de uma linha
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mf">3.2</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># podemos fazer a operação dentro da função print</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">%</span><span class="k">y</span>)
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.min_rows&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>11.2
-4.8
-25.6
-2.5
-1.5999999999999996
-2.0
-776.0468820533241
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13389,7 +13765,7 @@ e por isso precisamos de mais de uma linha
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Dois desses operadores também podem ser utilizados em strings!</p>
+<p>Podemos ver agora, que diferente da primeira vez que chamamos o bill, agora 18 linhas foram mostradas ao invés das 10 na primeira vez.</p>
 
 </div>
 </div>
@@ -13399,11 +13775,7 @@ e por isso precisamos de mais de uma linha
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Ola&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;mundo&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span>
 </pre></div>
 
     </div>
@@ -13416,14 +13788,275 @@ e por isso precisamos de mais de uma linha
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Olamundo
-OlaOlaOla
-</pre>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rank</th>
+      <th>year</th>
+      <th>company.founded</th>
+      <th>...</th>
+      <th>wealth.how.industry</th>
+      <th>wealth.how.inherited</th>
+      <th>wealth.how.was founder</th>
+      <th>wealth.how.was political</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>1996</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>2001</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>2014</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Warren Buffett</td>
+      <td>2</td>
+      <td>1996</td>
+      <td>1962</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Warren Buffett</td>
+      <td>2</td>
+      <td>2001</td>
+      <td>1962</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Carlos Slim Helu</td>
+      <td>2</td>
+      <td>2014</td>
+      <td>1990</td>
+      <td>...</td>
+      <td>Media</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Oeri Hoffman and Sacher</td>
+      <td>3</td>
+      <td>1996</td>
+      <td>1896</td>
+      <td>...</td>
+      <td>Technology-Medical</td>
+      <td>3rd generation</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Paul Allen</td>
+      <td>3</td>
+      <td>2001</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Amancio Ortega</td>
+      <td>3</td>
+      <td>2014</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Retail, Restaurant</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2605</th>
+      <td>Wang Jianfeng</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>2004</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2606</th>
+      <td>Wang Muqing</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>...</td>
+      <td>Retail, Restaurant</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2607</th>
+      <td>Wang Yong</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1986</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2608</th>
+      <td>William Moncrief, Jr.</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1929</td>
+      <td>...</td>
+      <td>Energy</td>
+      <td>father</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2609</th>
+      <td>Wu Chung-Yi</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1991</td>
+      <td>...</td>
+      <td>Non-consumer industrial</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2610</th>
+      <td>Wu Xiong</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2611</th>
+      <td>Yang Keng</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Real Estate</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2612</th>
+      <td>Zdenek Bakala</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1994</td>
+      <td>...</td>
+      <td>Mining and metals</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2613</th>
+      <td>Zhu Wenchen</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>...</td>
+      <td>Technology-Medical</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>2614 rows × 22 columns</p>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -13433,16 +14066,7 @@ OlaOlaOla
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Também podemos simplificar algumas operações em variáveis já declaradas com os seguintes comandos:</p>
-<ul>
-<li><code>+=</code>: é equivalente a: <code>x = x +</code></li>
-<li><code>-=</code>: é equivalente a: <code>x = x -</code></li>
-<li><code>*=</code>: é equivalente a: <code>x = x *</code></li>
-<li><code>/=</code>: é equivalente a: <code>x = x /</code></li>
-<li><code>%=</code>: é equivalente a: <code>x = x %</code></li>
-<li><code>//=</code>: é equivalente a: <code>x = x //</code></li>
-<li><code>**=</code>: é equivalente a: <code>x = x **</code></li>
-</ul>
+<p>Assim como no R, podemos usar o <code>head</code>e <code>tail</code>pra ver o inicio e o fim do banco. Se passarmos o método sem nenhum parâmetro, eles tem como padrão 5, mas também podemos passar qualquer numero desejado.</p>
 
 </div>
 </div>
@@ -13452,9 +14076,7 @@ OlaOlaOla
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">x</span> <span class="o">+=</span> <span class="mi">2</span>      <span class="c1"># mesma coisa do que x = x + 2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13467,48 +14089,119 @@ OlaOlaOla
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>10
-</pre>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rank</th>
+      <th>year</th>
+      <th>company.founded</th>
+      <th>...</th>
+      <th>wealth.how.industry</th>
+      <th>wealth.how.inherited</th>
+      <th>wealth.how.was founder</th>
+      <th>wealth.how.was political</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>1996</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>2001</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bill Gates</td>
+      <td>1</td>
+      <td>2014</td>
+      <td>1975</td>
+      <td>...</td>
+      <td>Technology-Computer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Warren Buffett</td>
+      <td>2</td>
+      <td>1996</td>
+      <td>1962</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Warren Buffett</td>
+      <td>2</td>
+      <td>2001</td>
+      <td>1962</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
 </div>
+</div>
+
 </div>
 
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Para comparação podemos usar os seguintes operadores:</p>
-<ul>
-<li><code>==</code>: igual</li>
-<li><code>!=</code>: diferente</li>
-<li><code>&gt;</code>: maior</li>
-<li><code>&lt;</code>: menor</li>
-<li><code>&gt;=</code>: maior ou igual</li>
-<li><code>&lt;=</code>: menor ou igual</li>
-</ul>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Abc&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13521,15 +14214,143 @@ OlaOlaOla
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>False
-True
-True
-</pre>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rank</th>
+      <th>year</th>
+      <th>company.founded</th>
+      <th>...</th>
+      <th>wealth.how.industry</th>
+      <th>wealth.how.inherited</th>
+      <th>wealth.how.was founder</th>
+      <th>wealth.how.was political</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2606</th>
+      <td>Wang Muqing</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>...</td>
+      <td>Retail, Restaurant</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2607</th>
+      <td>Wang Yong</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1986</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2608</th>
+      <td>William Moncrief, Jr.</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1929</td>
+      <td>...</td>
+      <td>Energy</td>
+      <td>father</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2609</th>
+      <td>Wu Chung-Yi</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1991</td>
+      <td>...</td>
+      <td>Non-consumer industrial</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2610</th>
+      <td>Wu Xiong</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>...</td>
+      <td>Consumer</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2611</th>
+      <td>Yang Keng</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Real Estate</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2612</th>
+      <td>Zdenek Bakala</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1994</td>
+      <td>...</td>
+      <td>Mining and metals</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2613</th>
+      <td>Zhu Wenchen</td>
+      <td>1565</td>
+      <td>2014</td>
+      <td>1999</td>
+      <td>...</td>
+      <td>Technology-Medical</td>
+      <td>not inherited</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 22 columns</p>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -13539,12 +14360,7 @@ True
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>De operadores lógicos temos os 3 clássicos:</p>
-<ul>
-<li><code>and</code>: True se todos são True</li>
-<li><code>or</code>: True se ao menos um é True</li>
-<li><code>not</code>: Oposto do resultado</li>
-</ul>
+<p>Para selecionar uma coluna, podemos passar, dentro de colchetes, seu nome entre aspas, o resultado disso é uma <code>Series</code>. Com isso podemos ver que então, um <code>DataFrame</code> pro Pandas, é uma coleção de <code>Series</code>.</p>
 
 </div>
 </div>
@@ -13554,13 +14370,8 @@ True
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Abc&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bill</span><span class="p">[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bill</span><span class="p">[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">]))</span>
 </pre></div>
 
     </div>
@@ -13577,8 +14388,27 @@ True
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-False
+<pre>0       18.5
+1       58.7
+2       76.0
+3       15.0
+4       32.3
+5       72.0
+6       13.1
+7       30.4
+8       64.0
+        ... 
+2605     1.0
+2606     1.0
+2607     1.0
+2608     1.0
+2609     1.0
+2610     1.0
+2611     1.0
+2612     1.0
+2613     1.0
+Name: wealth.worth in billions, Length: 2614, dtype: float64
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
 </pre>
 </div>
 </div>
@@ -13590,10 +14420,15 @@ False
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>E por fim, temos os operadores de identidade. Eles não comparam se os objetos são iguais, mas sim se eles são o mesmo objeto, com mesma posição de memória:</p>
+<p>Agora que sabemos selecionar uma coluna, podemos também calcular algumas estatísticas sobre ela, como foi feito no <code>describe</code>. Para isso, após escolher a coluna, chamamos o método desejado. Segue alguns interessantes:</p>
 <ul>
-<li><code>is</code>: True se ambos são o mesmo objeto</li>
-<li><code>is not</code>: True se os dois não são o mesmo objeto</li>
+<li><code>mean()</code>: média da coluna</li>
+<li><code>median()</code>: mediana da coluna</li>
+<li><code>mode()</code>: moda da coluna</li>
+<li><code>min()</code>: valor mínimo</li>
+<li><code>max()</code>: valor máximo</li>
+<li><code>std()</code>: desvio padrão</li>
+<li><code>cumsum()</code>: soma cumulativa</li>
 </ul>
 
 </div>
@@ -13604,12 +14439,7 @@ False
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lista1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">lista2</span> <span class="o">=</span> <span class="n">lista1</span>
-<span class="n">lista3</span> <span class="o">=</span> <span class="n">lista1</span><span class="p">[:]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">lista2</span> <span class="ow">is</span> <span class="n">lista1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">lista1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="p">[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13622,86 +14452,27 @@ False
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-True
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3.531943381790374</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Listas">Listas<a class="anchor-link" href="#Listas">&#182;</a></h3><p>As <code>lists</code> do Python são semelhantes às listas do R. Ou seja, são um agrupamento sequencial de dados em uma variável, onde esses dados podem ou não ser do mesmo tipo.
-A lista comporta qualquer tipo de dado, e como a lista em si também é um tipo de dado, podemos ter uma lista contendo outra lista, e assim por diante. Vale notar que o conteúdo e o tamanho de uma lista podem ser alterados. Muitas vezes declaramos uma <code>empty list</code> pra depois ir adicionando objetos a ela.</p>
-<p>Para criar uma lista, escrevemos os objetos dentro de um  <code>[ ]</code>, e separamos eles com <code>,</code>. Selecionar elementos de uma lista é bem simples, escrevemos o nome da lista e logo depois abrimos colchetes, escrevendo qual index queremos. Podemos selecionar vários elementos utilizando dentro dos colchetes: <code>desde:até</code>. Se não especificarmos o primeiro elemento, é considerado desde o início, e se não especificarmos o segundo, é considerado até o final.</p>
-<p>Uma grande diferença aparece quando falamos de indexação, pois o Python é uma linguagem de base 0 index, enquanto o R é de base 1 index. Ou seja, o primeiro elemento de algo indexado no Python tem o número 0, enquanto no R, o primeiro elemento é o de número 1.
-Outra diferença também pode ser vista quando estamos selecionando elementos de uma lista. Por exemplo, no R tanto o início/esquerda, como o final/direita são inclusivos, porém em Python, a direita é exclusivo.</p>
-<p>Outra característica é que podemos usar índices negativos, começando pelo <code>-1</code> como sendo o último elemento, <code>-2</code> o penúltimo e assim por diante.</p>
-<table>
-<thead><tr>
-<th style="text-align:center">c</th>
-<th style="text-align:center">o</th>
-<th style="text-align:center">r</th>
-<th style="text-align:center">o</th>
-<th style="text-align:center">l</th>
-<th style="text-align:center">a</th>
-<th style="text-align:center">r</th>
-<th style="text-align:center">i</th>
-<th style="text-align:center">o</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">6</td>
-<td style="text-align:center">7</td>
-<td style="text-align:center">8</td>
-</tr>
-<tr>
-<td style="text-align:center">-9</td>
-<td style="text-align:center">-8</td>
-<td style="text-align:center">-7</td>
-<td style="text-align:center">-6</td>
-<td style="text-align:center">-5</td>
-<td style="text-align:center">-4</td>
-<td style="text-align:center">-3</td>
-<td style="text-align:center">-2</td>
-<td style="text-align:center">-1</td>
-</tr>
-</tbody>
-</table>
-<p>(iremos trabalhar com listas e strings agora, pois seu funcionamento é parecido)</p>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">str1</span> <span class="o">=</span> <span class="s2">&quot;corolario&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">str1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>            <span class="c1"># carácter de índice 1, segunda posição</span>
-      <span class="n">str1</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>           <span class="c1"># penúltimo</span>
-      <span class="n">str1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>               <span class="c1"># desde o primeiro índice, até o -4</span>
-
-<span class="n">lista1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;quatro&quot;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>          <span class="c1"># elemento de índice 1, segunda posição</span>
-      <span class="n">lista1</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>         <span class="c1"># do inicio até a terceira posição</span>
-      <span class="n">lista1</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>              <span class="c1"># da penúltima até o fim</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="p">[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13714,18 +14485,34 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>o 
- i 
- orol
-2 
- [1, 2] 
- [3, &#39;quatro&#39;]
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0         18.5
+1         77.2
+2        153.2
+3        168.2
+4        200.5
+5        272.5
+6        285.6
+7        316.0
+8        380.0
+         ...  
+2605    9224.5
+2606    9225.5
+2607    9226.5
+2608    9227.5
+2609    9228.5
+2610    9229.5
+2611    9230.5
+2612    9231.5
+2613    9232.5
+Name: wealth.worth in billions, Length: 2614, dtype: float64</pre>
 </div>
+
 </div>
 
 </div>
@@ -13735,7 +14522,7 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Para manipularmos uma lista temos varias ferramentas, como trocar o valor de uma das posições, adicionar novos valores à lista, remover valores (alterando o índice geral), etc.</p>
+<p>Podemos também selecionar mais de uma coluna ao mesmo tempo, pra isso, passamos os nomes das colunas, como uma lista, para o banco. O resultado dessa escolha sera um novo <code>DataFrame</code>, ao invés de uma <code>Series</code> como aconteceu com a seleção de uma coluna só.</p>
 
 </div>
 </div>
@@ -13745,23 +14532,8 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lista1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">lista1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>                   <span class="c1"># não funciona com strings</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista1</span><span class="p">)</span>
-
-<span class="n">lista2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="n">lista2</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>          <span class="c1"># trocando os de índice 1 e 2, por 20 e 22, nessa ordem</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista2</span><span class="p">)</span>
-
-<span class="n">lista3</span> <span class="o">=</span> <span class="n">lista1</span> <span class="o">+</span> <span class="n">lista2</span>        <span class="c1"># não é soma elemento a elemento</span>
-<span class="n">lista4</span> <span class="o">=</span> <span class="n">lista2</span> <span class="o">+</span> <span class="n">lista1</span>        <span class="c1"># estamos juntando duas listas</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista3</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lista4</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista3</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">lista3</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
-<span class="k">del</span><span class="p">(</span><span class="n">lista3</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>                <span class="c1"># deletando os elementos da primeira até a terceira posição</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista3</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lista3</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>  <span class="c1"># note que o valor da lista no index 6 é alterados</span>
-<span class="c1"># pois os elementos foram removidos, e o índice foi &quot;recalculado&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bill</span><span class="p">[[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">,</span><span class="s2">&quot;location.gdp&quot;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bill</span><span class="p">[[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">,</span><span class="s2">&quot;location.gdp&quot;</span><span class="p">]]))</span>
 </pre></div>
 
     </div>
@@ -13778,14 +14550,29 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[3, 1, 2, 3, 4]
-[5, 20, 22, 8, 9]
-[3, 1, 2, 3, 4, 5, 20, 22, 8, 9] 
- [5, 20, 22, 8, 9, 3, 1, 2, 3, 4]
-[1, 3, 5, 22]
-20
-[3, 4, 5, 20, 22, 8, 9] 
- 9
+<pre>      wealth.worth in billions  location.gdp
+0                         18.5  8.100000e+12
+1                         58.7  1.060000e+13
+2                         76.0  0.000000e+00
+3                         15.0  8.100000e+12
+4                         32.3  1.060000e+13
+5                         72.0  0.000000e+00
+6                         13.1  3.300000e+11
+7                         30.4  1.060000e+13
+8                         64.0  0.000000e+00
+...                        ...           ...
+2605                       1.0  0.000000e+00
+2606                       1.0  0.000000e+00
+2607                       1.0  0.000000e+00
+2608                       1.0  0.000000e+00
+2609                       1.0  0.000000e+00
+2610                       1.0  0.000000e+00
+2611                       1.0  0.000000e+00
+2612                       1.0  0.000000e+00
+2613                       1.0  0.000000e+00
+
+[2614 rows x 2 columns]
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </pre>
 </div>
 </div>
@@ -13797,7 +14584,7 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Por fim, vale apontar que temos que cuidar quando formos criar uma nova lista a partir de uma antiga. Pois se utilizarmos o símbolo de igualdade com a finalidade de dizer que a nova lista é igual à anterior, estaremos criando uma nova lista que aponta para o mesmo local da memória que a anterior, pois estaremos copiando a referência da memória, e não os valores em si. Para copiar apenas os valores, mas em uma lista diferente, devemos dizer que a nova lista é igual ao slice completo da anterior, ou que é um objeto do tipo lista da anterior. Dessa forma, pegaremos os valores e eles estarão em um local diferente da memória.</p>
+<p>E assim como com uma coluna apenas, também podemos usar os métodos vistos anteriormente nos <code>DataFrames</code>.</p>
 
 </div>
 </div>
@@ -13807,17 +14594,94 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lista1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
-<span class="n">lista2</span> <span class="o">=</span> <span class="n">lista1</span>
-<span class="n">lista2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lista2</span><span class="p">)</span>     <span class="c1"># note que as duas listas possuem os mesmos valores, mesmo que a gente tenha mudado apenas a lista 2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="p">[[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">,</span><span class="s2">&quot;location.gdp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
 
-<span class="n">lista3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">lista4</span> <span class="o">=</span> <span class="n">lista3</span><span class="p">[:]</span>
-<span class="n">lista5</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lista3</span><span class="p">)</span>
-<span class="n">lista4</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span>
-<span class="n">lista5</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;c&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lista3</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lista4</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lista5</span><span class="p">)</span>
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>wealth.worth in billions    3.531943e+00
+location.gdp                1.769103e+12
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bill</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>rank                        5.996725e+02
+year                        2.008412e+03
+company.founded             1.924712e+03
+demographics.age            5.334124e+01
+location.gdp                1.769103e+12
+wealth.worth in billions    3.531943e+00
+wealth.how.from emerging    1.000000e+00
+wealth.how.was founder      1.000000e+00
+wealth.how.was political    1.000000e+00
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Para facilitar nossa vida e reduzir a repetição, podemos armazenar o que estamos fazendo em variáveis.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">bill</span><span class="p">[[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">,</span><span class="s2">&quot;location.gdp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13834,13 +14698,56 @@ Outra diferença também pode ser vista quando estamos selecionando elementos de
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;a&#39;, 1, &#39;c&#39;] 
- [&#39;a&#39;, 1, &#39;c&#39;]
-[1, 2, 3] 
- [1, &#39;b&#39;, 3] 
- [1, 2, &#39;c&#39;]
+<pre>wealth.worth in billions    3.531943e+00
+location.gdp                1.769103e+12
+dtype: float64
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Também é possível passar as colunas e seleções como variáveis, nos poupando muito trabalho de reescrita e até automatizar o processo de seleção, dado que podemos adicionar e remover itens de uma lista facilmente.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;wealth.worth in billions&quot;</span><span class="p">,</span><span class="s2">&quot;location.gdp&quot;</span><span class="p">]</span>
+<span class="n">bill</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>wealth.worth in billions    3.531943e+00
+location.gdp                1.769103e+12
+dtype: float64</pre>
+</div>
+
 </div>
 
 </div>
