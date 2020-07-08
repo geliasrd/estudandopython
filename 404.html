@@ -12,13 +12,23 @@
     }
     
     body{
+      margin: 0;
+      padding: 0;
       display: flex;
-      height: 98vh;
+      height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background: #c2c2c2;
+      -webkit-font-smoothig: antialiased;
+    }
+
+    .content {
+      display: flex;
+      flex: 1;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #c2c2c2;
-      -webkit-font-smoothig: antialiased;
     }
     
     .title {
@@ -46,24 +56,26 @@
       font-weight: 400;
     }
     
-    a {
+    .button a {
       display: flex;
       text-decoration: none;
-      color: black;
+      color: #666;
       border: 2px solid #666;
       align-items: center;
       justify-content: center;
       transition: 0.4s;
+      -webkit-tap-highlight-color: transparent;
       /* box-shadow: 0 0 0px rgba(255, 136, 0, 0.5); */
       /* transition: box-shadow 0.5s; */
     }
     
-    a:visited {
-      color: black;
+    .button a:visited {
+      color: #666;
     }
     
-    a:hover {
-      /* box-shadow: 0 0 60px rgba(255, 136, 0, 0.5); */
+    .button a:hover {
+      transform: translate3d(-5px, -5px, 0);
+      box-shadow: 10px 10px 0 rgba(255, 136, 0, 0.5);
       color: black;
       border: 2px solid black;
     }
@@ -72,8 +84,43 @@
       margin: 10px 15px;
       font-weight: 400;
     }
+
+    footer {
+      display: flex;
+      border: 0;
+      flex-direction: row;
+    }
+    
+    footer ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      border: 0;
+      margin: 20px 20px;
+    }
+
+    footer ul li a {
+        display: flex;
+    }
+
+    footer ul li a img {
+        height: 40px;
+        width: 40px;
+        transition: 0.3s;
+    }
+
+    footer ul li a img:hover {
+        opacity: 70%;
+    }
     
     @media (max-width: 400px) {
+      body {
+        height: 92vh;
+      }
+
       .title h2 {
         font-size: 22px;
       }
@@ -98,14 +145,43 @@
   <title>404 - Página não encontrada</title>
 </head>
 <body>
-  <div>
+  <div class="content">
     <div class="title">
       <h1>404</h1>
       <h2>Página não encontrada</h2>
     </div>
     
-    <a href="https://geliasrd.github.io/estudandopython"><h2>Ir para página principal</h2></a>
+    <div class="button">
+      <a href="https://geliasrd.github.io/estudandopython"><h2>Ir para página principal</h2></a>
+    </div>
   </div>
   
 </body>
+    <footer>
+      <ul>
+          <li>
+              <a href="mailto:elias.doering@ufrgs.br">
+                  <img src="images/@.svg"></img>
+              </a>
+          </li>
+          
+          <li>
+              <a href="https://github.com/geliasrd">
+                  <img src="images/github-brands.svg"></img>
+              </a>
+          </li>
+  
+          <li>
+              <a href="http://lattes.cnpq.br/0867504039266040">
+                  <img src="images/lattes.png"></img>
+              </a>
+          </li>
+          
+          <li>
+            <a href="https://br.linkedin.com/in/guilherme-elias-rodriguez-doering-a473511b2" target="_blank">
+                <img src="images/linkedin.png"></img>
+            </a>
+        </li>
+      </ul>   
+  </footer>
 </html>
